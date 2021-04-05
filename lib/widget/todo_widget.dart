@@ -23,7 +23,11 @@ class TodoWidget extends StatelessWidget {
           actions: [
             IconSlideAction(
               color: Colors.green,
-              onTap: () => editTodo(context, todo),
+              onTap: () => showDialog(
+                builder: (context) => EditTodoPage(todo: todo),
+                context: context,
+                barrierDismissible: false,
+              ),
               caption: 'Edit',
               icon: Icons.edit,
             )
@@ -41,7 +45,11 @@ class TodoWidget extends StatelessWidget {
       );
 
   Widget buildTodo(BuildContext context) => GestureDetector(
-        onTap: () => editTodo(context, todo),
+        onTap: () => showDialog(
+          builder: (context) => EditTodoPage(todo: todo),
+          context: context,
+          barrierDismissible: false,
+        ),
         child: Container(
           color: Colors.white,
           padding: EdgeInsets.all(20),

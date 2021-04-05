@@ -28,34 +28,30 @@ class _EditTodoPageState extends State<EditTodoPage> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text('Edit Todo'),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () {
-                final provider =
-                    Provider.of<TodosProvider>(context, listen: false);
-                provider.removeTodo(widget.todo);
-
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(16),
-          child: Form(
-            key: _formKey,
-            child: TodoFormWidget(
-              title: title,
-              description: description,
-              onChangedTitle: (title) => setState(() => this.title = title),
-              onChangedDescription: (description) =>
-                  setState(() => this.description = description),
-              onSavedTodo: saveTodo,
-            ),
+  Widget build(BuildContext context) => AlertDialog(
+        content: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Edit Todo',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                ),
+              ),
+              const SizedBox(height: 8),
+              TodoFormWidget(
+                title: title,
+                description: description,
+                onChangedTitle: (title) => setState(() => this.title = title),
+                onChangedDescription: (description) =>
+                    setState(() => this.description = description),
+                onSavedTodo: saveTodo,
+              )
+            ],
           ),
         ),
       );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todolist/model/todo.dart';
 import 'package:todolist/provider/todos.dart';
 import 'package:todolist/widget/todo_widget.dart';
 
